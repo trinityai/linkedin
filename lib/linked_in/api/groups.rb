@@ -78,6 +78,11 @@ module LinkedIn
         simple_query(path, options)
       end
 
+      def group_post(post_id, options)
+        path = "#{group_path(options)}/posts/#{post_id}"
+        simple_query(path, options)
+      end
+
       # @deprecated Use {#add_group_share} instead
       def post_group_discussion(group_id, discussion)
         warn 'Use add_group_share over post_group_discussion. This will be taken out in future versions'
