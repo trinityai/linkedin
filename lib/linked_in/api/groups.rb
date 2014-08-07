@@ -14,8 +14,6 @@ module LinkedIn
     #   * DELETE Leave a group
     #   * PUT Follow/unfollow a Group post
     #   * PUT Flag a Post as a Promotion or Job
-    #   * DELETE Delete a Post
-    #   * DELETE Flag a post as inappropriate
     #   * DELETE A comment or flag comment as inappropriate
     #   * DELETE Remove a Group Suggestion
     #
@@ -115,6 +113,19 @@ module LinkedIn
         body = {'membership-state' => {'code' => 'member' }}
         put(path, MultiJson.dump(body), "Content-Type" => "application/json")
       end
+
+
+      # (Destroy) remove a post or flag as inappropriate
+      #
+      # @see https://developer.linkedin.com/documents/groups-api
+      #
+      # @param [String] post_id Post ID
+      # @return [void]
+      def delete_post(post_id)
+        path = "/posts/#{post_id}"
+        delete(path)
+      end
+
     end
   end
 end
