@@ -102,6 +102,11 @@ module LinkedIn
         post(path, MultiJson.dump(share), "Content-Type" => "application/json")
       end
 
+      def add_group_share_as(group_id, share, token)
+        path = "/groups/#{group_id}/posts?oauth2_access_token=#{token}"
+        post(path, MultiJson.dump(share), "Content-Type" => "application/json")
+      end
+
       # (Update) User joins, or requests to join, a group
       #
       # @see http://developer.linkedin.com/documents/groups-api#membergroups
